@@ -1,0 +1,32 @@
+{
+  "name": "runiv-redir",
+  "version": "1.0.0",
+  "description": "Runiv redirection server",
+  "main": "server.js",
+  "scripts": {
+    "test": "mocha",
+    "start": "NODE_ENV=production node server.js",
+    "dev": "npx nodemon server.js"
+  },
+  "keywords": [
+    "runiv"
+  ],
+  "author": "Harshit Vishwakarma",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "morgan": "^1.10.0",
+    "mustache-express": "^1.3.1",
+    "pg": "^8.6.0",
+    "redis": "^3.1.2",
+    "sequelize": "^6.6.5"
+  },
+  "devDependencies": {
+    "chai": "^4.3.4",
+    "mocha": "^9.0.2",
+    "nodemon": "^2.0.10",
+    "sequelize-cli": "^6.2.0"
+  }
+}

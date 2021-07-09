@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="title" content="Runiv short URL service. For Thapar University.">
+    <meta name="description" content="Runiv short URL service. Redirection owner {{alias}}">
+    <meta http-equiv="refresh" content="{{waiting}}; url={{destination}}">
+    <title>Runiv - {{alias}}</title>
+    <style type="text/css">
+        body {
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            
+        }
+        div {
+            width: 600px;
+            margin: 5em auto;
+            padding: 2em;
+            background-color: #fdfdff;
+            border-radius: 0.5em;
+            box-shadow: 2px 3px 7px 2px rgba(0,0,0,0.02);
+        }
+        a:link, a:visited {
+            color: #38488f;
+            text-decoration: none;
+        }
+
+        #title {
+            font-size: smaller;
+        }
+
+        p#manal {
+            font-size: small;
+        }
+
+        p#footer{
+            font-size: smaller;
+            color: grey;
+            text-align: center;
+        }
+
+        @media (max-width: 700px) {
+            div {
+                margin: 0 auto;
+                width: auto;
+            }
+        }
+        
+    </style>
+</head>
+<body>
+    <div id="main">
+        <span id="title">Powered by <span id="runiv-brand">RUNIV</span></span>
+        <h1>Redirecting to {{hostname}}</h1>
+        <p id="manual">
+            Page not redirecting automatically? <a href="{{destination}}">Click Here</a>
+        </p>
+        <hr />
+        <p id="footer">
+            RUNIV &copy; {{year}}
+        </p>
+    </div>
+</body>
+</html>

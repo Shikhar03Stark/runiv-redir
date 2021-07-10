@@ -1,9 +1,8 @@
 const redis = require('redis');
 
-let rclient;
 
 try {
-    rclient = redis.createClient({
+    const rclient = redis.createClient({
         host: process.env.REDIS_HOST || '127.0.0.1',
         port: process.env.REDIS_PORT || 6379,
         password: process.env.REDIS_PASSWORD || null,
@@ -11,9 +10,9 @@ try {
     
     console.log(`Connected to Redis`);
     
+    module.exports = rclient;
 } catch (error) {
-    rclient = null;
+    rclient = {};
     console.log(error);
+    module.exports = {};
 }
-
-module.exports = rclient;

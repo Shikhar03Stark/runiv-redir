@@ -7,7 +7,7 @@ try {
         port: process.env.REDIS_PORT || 6379,
         password: process.env.REDIS_PASSWORD || null,
     });
-    
+    rclient.SETNX('GCNT', 0);
     console.log(`Connected to Redis`);
     
     module.exports = rclient;

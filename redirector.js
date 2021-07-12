@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const sequelize = require('./database/index').init.sequelize;
 const model = require('./database/index').model;
+const Op = require('./database/index').init.Op;
 const rc = require('./init');
 const uri = require('url');
 const promisify = require('util').promisify;
@@ -115,11 +116,13 @@ const dest_hit = async (alias, slug) => {
                 const link = await model.link.findOne({
                     where:{
                         slug: slug,
+                        status: 'ACTIVE',
                     },
                     include: {
                         model: model.user,
                         where: {
                             alias: alias,
+                            banned: false,
                         }
                     }
 
@@ -215,6 +218,8 @@ const sync_db = async (options) => {
                     });
                 }
             }
+
+            rc.INCR('GCNT');
         }
     }
 }
@@ -237,15 +242,17 @@ router.get('*', async (req, res, next) => {
             sync_db(data);
             if(data.valid){
                 if(data.destination){
+                    const re = /^(https?:\/\/)/;
+                    if(!re.test(data.destination)) data.destination = 'http://'+data.destination;
                     const hostname = new URL(data.destination).hostname;
                     res.status(200).render('redirect', {alias, waiting:1, year, destination: data.destination, hostname});
                 }
                 else{
-                    res.status(200).send('default - link doesn\'t exist');
+                    res.status(200).render('default', {alias, waiting:5, year, destination:null});
                 }
             }
             else{
-                res.status(200).send({reason: data.reason});
+                res.status(200).render('invalid', {year, destination:null});
             }
             console.log(data);
         });

@@ -254,7 +254,7 @@ router.get('*', async (req, res, next) => {
             else{
                 res.status(200).render('invalid', {year, destination:null});
             }
-            console.log(data);
+            //console.log(data);
         });
         
 

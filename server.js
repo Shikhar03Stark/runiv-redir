@@ -62,6 +62,7 @@ app.use((req, res, next) => {
 
 app.listen(PORT, () => {
     console.log(`Server running @:${PORT}`);
+    console.log(`NODE_ENV ${process.env.NODE_ENV}`);
 });
 
 //testing server

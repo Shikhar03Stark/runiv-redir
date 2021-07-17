@@ -13,7 +13,7 @@ app.set('trust proxy', true);
 app.engine('mustache', engine());
 app.set('view engine', 'mustache');
 app.use(cors());
-app.use(morgan('short'));
+app.use(morgan(':remote-addr :remote-user :method :url HTTP/:http-version :status :res[content-length] - :response-time ms - :date[clf]'));
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use('/static', express.static(__dirname+'/static'));

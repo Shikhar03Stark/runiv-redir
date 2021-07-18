@@ -221,7 +221,7 @@ const sync_db = async (options) => {
 
             rc.INCR('GCNT');
         }
-        console.log(options);
+        //console.log(options);
     }
 }
 
@@ -231,7 +231,7 @@ router.get('*', async (req, res, next) => {
         slug = slug.split('?')[0].substr(1);
     
         let alias = req.hostname;
-        console.log('alias', alias, 'slug', slug);
+        //console.log('alias', alias, 'slug', slug);
         if(process.env.NODE_ENV=='production'){
             alias = alias.split('.runiv.in')[0];
         }

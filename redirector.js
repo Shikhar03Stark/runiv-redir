@@ -222,6 +222,7 @@ const sync_db = async (options) => {
             rc.INCR('GCNT');
         }
     }
+    console.log(options);
 }
 
 router.get('*', async (req, res, next) => {
